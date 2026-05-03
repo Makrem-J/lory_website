@@ -18,18 +18,6 @@ export const MasterMascot = () => {
   const rotate = useTransform(smoothProgress, [0, 1], [0, 360]);
   const x = useTransform(smoothProgress, [0, 0.2], ["0%", "40%"]);
   const y = useTransform(smoothProgress, [0, 0.2], ["0%", "85vh"]);
-  
-  // Floating animation for "alive" feel
-  const floatY = {
-    animate: {
-      y: [0, -20, 0],
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  };
 
   return (
     <motion.div
@@ -43,12 +31,20 @@ export const MasterMascot = () => {
         rotate,
         translateX: x,
         translateY: y,
-        pointerEvents: 'none', // Allow clicking through to content
+        pointerEvents: 'none',
         width: '400px',
         height: '400px',
       }}
-      variants={floatY}
-      animate="animate"
+      animate={{
+        y: [0, -20, 0],
+      }}
+      transition={{
+        y: {
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }
+      }}
     >
       <svg
         viewBox="0 0 200 200"
