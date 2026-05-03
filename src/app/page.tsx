@@ -13,13 +13,14 @@ import { Contact } from '@/components/Contact';
 import { WaitlistForm } from '@/components/WaitlistForm';
 import { Footer } from '@/components/Footer';
 import { GDPR } from '@/components/GDPR';
-import { StickyMascot } from '@/components/StickyMascot';
+import { MasterMascot } from '@/components/MasterMascot';
 import styles from '@/styles/Home.module.css';
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Header />
+      <MasterMascot />
       <main className={styles.mainContent}>
         <Hero />
         <SocialProof />
@@ -42,7 +43,6 @@ export default function Home() {
       </main>
       <Footer />
       <GDPR />
-      <StickyMascot />
     </div>
   );
 }

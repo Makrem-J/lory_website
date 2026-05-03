@@ -93,11 +93,9 @@
   font-weight: 600;
 }
 
-.mascotContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+.mascotSpacer {
+  width: 400px;
+  height: 400px;
 }
 
 @media (max-width: 1024px) {
@@ -106,11 +104,16 @@
     text-align: center;
     padding: 4rem 0;
   }
-  
+
   .content {
     align-items: center;
+    margin-bottom: 250px; /* Make room for the large mascot at the top */
   }
 
+  .mascotSpacer {
+    display: none;
+  }
+...
   .title {
     font-size: 3.5rem;
   }

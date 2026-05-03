@@ -1,7 +1,6 @@
 'use client';
 
 import { useTranslation } from '@/translations/TranslationContext';
-import { Mascot } from './Mascot';
 import { JourneyMap } from './JourneyMap';
 import { motion } from 'framer-motion';
 import styles from '@/styles/Hero.module.css';
@@ -66,8 +65,8 @@ export const Hero = () => {
           </div>
         </div>
       </div>
-      <div className={styles.mascotContainer}>
-        <Mascot />
+      <div className={styles.mascotSpacer}>
+        {/* This div just reserves space for the MasterMascot when at the top */}
       </div>
     </section>
   );
