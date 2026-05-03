@@ -12,16 +12,15 @@ export const MasterMascot = () => {
     restDelta: 0.001
   });
 
-  // Dynamic transformations based on scroll
-  // Starts at center-right of the hero, moves to bottom-right corner
-  const scale = useTransform(smoothProgress, [0, 0.2], [1.3, 0.4]);
+  // Spread the transformation across the entire scroll [0, 1]
+  // This makes the mascot accompany the user all the way down.
+  const scale = useTransform(smoothProgress, [0, 1], [1.3, 0.4]);
   const rotate = useTransform(smoothProgress, [0, 1], [0, 360]);
   
   // Positioning: Stay on the right. 
-  // At the top (0), we are centered in the right column.
-  // As we scroll, we move closer to the absolute edge.
-  const rightPos = useTransform(smoothProgress, [0, 0.2], ["15%", "5%"]);
-  const y = useTransform(smoothProgress, [0, 0.2], ["0vh", "82vh"]);
+  const rightPos = useTransform(smoothProgress, [0, 1], ["15%", "5%"]);
+  // y moves from its initial top position to a bottom-ish position across the WHOLE page
+  const y = useTransform(smoothProgress, [0, 1], ["0vh", "75vh"]);
 
   return (
     <motion.div
