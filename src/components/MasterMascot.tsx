@@ -13,30 +13,33 @@ export const MasterMascot = () => {
   });
 
   // Dynamic transformations based on scroll
-  // Starts at top right/center, moves to bottom right corner
-  const scale = useTransform(smoothProgress, [0, 0.2], [1.5, 0.5]);
+  // Starts at center-right of the hero, moves to bottom-right corner
+  const scale = useTransform(smoothProgress, [0, 0.2], [1.3, 0.4]);
   const rotate = useTransform(smoothProgress, [0, 1], [0, 360]);
-  const x = useTransform(smoothProgress, [0, 0.2], ["0%", "40%"]);
-  const y = useTransform(smoothProgress, [0, 0.2], ["0%", "85vh"]);
+  
+  // Positioning: Stay on the right. 
+  // At the top (0), we are centered in the right column.
+  // As we scroll, we move closer to the absolute edge.
+  const rightPos = useTransform(smoothProgress, [0, 0.2], ["15%", "5%"]);
+  const y = useTransform(smoothProgress, [0, 0.2], ["0vh", "82vh"]);
 
   return (
     <motion.div
       style={{
         position: 'fixed',
         top: '15vh',
-        right: '50%',
-        x: "-50%",
+        right: rightPos,
         zIndex: 1000,
         scale,
         rotate,
-        translateX: x,
         translateY: y,
         pointerEvents: 'none',
         width: '400px',
         height: '400px',
+        transformOrigin: 'center center'
       }}
       animate={{
-        y: [0, -20, 0],
+        y: [0, -15, 0],
       }}
       transition={{
         y: {
@@ -67,7 +70,7 @@ export const MasterMascot = () => {
           </linearGradient>
         </defs>
 
-        {/* Tail Feathers - Detailed */}
+        {/* Tail Feathers */}
         <motion.g
           animate={{ rotate: [-5, 5, -5] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
@@ -76,7 +79,7 @@ export const MasterMascot = () => {
           <path d="M70 145 L100 185 L130 145" fill="#26DE81" opacity="0.6" />
         </motion.g>
 
-        {/* Detailed Body */}
+        {/* Body */}
         <circle cx="100" cy="115" r="55" fill="url(#bodyGrad)" />
         <circle cx="100" cy="125" r="40" fill="url(#bellyGrad)" />
         
@@ -99,7 +102,7 @@ export const MasterMascot = () => {
           <path d="M165 115 C 195 100, 195 130, 165 135" fill="#5352ED" opacity="0.5" />
         </motion.g>
 
-        {/* Head with more detail */}
+        {/* Head */}
         <motion.g
           animate={{ rotate: [-3, 3, -3] }}
           transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
@@ -107,7 +110,7 @@ export const MasterMascot = () => {
         >
           <circle cx="100" cy="70" r="42" fill="url(#bodyGrad)" />
           
-          {/* Eyes with highlights */}
+          {/* Eyes */}
           <circle cx="82" cy="65" r="10" fill="white" />
           <motion.circle 
             cx="84" cy="65" r="5" fill="black" 
@@ -124,11 +127,11 @@ export const MasterMascot = () => {
           />
           <circle cx="116" cy="62" r="3" fill="white" opacity="0.8" />
           
-          {/* Beak with depth */}
+          {/* Beak */}
           <path d="M92 82 L100 108 L108 82 H92" fill="#FF7F50" />
           <path d="M100 82 L100 108 L108 82 H100" fill="#E67E22" />
           
-          {/* Little "Hair" Crest */}
+          {/* Crest */}
           <path d="M95 30 Q 100 10 105 30" stroke="#FF4757" strokeWidth="4" fill="none" />
         </motion.g>
       </svg>
