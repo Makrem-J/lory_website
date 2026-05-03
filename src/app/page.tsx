@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Header />
-      <main>
+      <main className={styles.mainContent}>
         <Hero />
         <HowItWorks />
         <Roadmap />

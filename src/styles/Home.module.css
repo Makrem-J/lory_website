@@ -4,7 +4,7 @@
   flex-direction: column;
 }
 
-main {
+.mainContent {
   flex-grow: 1;
   width: 100%;
   max-width: 1200px;
