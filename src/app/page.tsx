@@ -2,7 +2,9 @@
 
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
+import { SocialProof } from '@/components/SocialProof';
 import { Features } from '@/components/Features';
+import { AppPreview } from '@/components/AppPreview';
 import { HowItWorks } from '@/components/HowItWorks';
 import { Roadmap } from '@/components/Roadmap';
 import { BlogNews } from '@/components/BlogNews';
@@ -20,7 +22,9 @@ export default function Home() {
       <Header />
       <main className={styles.mainContent}>
         <Hero />
+        <SocialProof />
         <Features />
+        <AppPreview />
         <div id="how-it-works">
           <HowItWorks />
         </div>

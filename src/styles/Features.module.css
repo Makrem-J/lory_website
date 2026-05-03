@@ -3,13 +3,10 @@
 }
 
 .title {
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: 3.5rem;
+  font-weight: 900;
   text-align: center;
-  margin-bottom: 4rem;
-  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--success));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin-bottom: 5rem;
 }
 
 .grid {
@@ -19,28 +16,49 @@
 }
 
 .card {
-  background: white;
   padding: 3rem 2rem;
-  border-radius: 2rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  border-radius: 2.5rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 71, 87, 0.3);
 }
 
 .icon {
-  margin-bottom: 1.5rem;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.5rem;
+  background: white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
 .featureTitle {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 800;
-  margin-bottom: 1rem;
+  color: var(--secondary);
 }
 
 .desc {
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
 }

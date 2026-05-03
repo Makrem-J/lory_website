@@ -1,60 +1,132 @@
 .hero {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
   gap: 4rem;
-  padding: 4rem 0;
-  min-height: 80vh;
+  padding: 6rem 0;
+  min-height: 90vh;
+  position: relative;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
+  z-index: 1;
+}
+
+.badge {
+  background: rgba(255, 71, 87, 0.1);
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  width: fit-content;
+  border: 1px solid rgba(255, 71, 87, 0.2);
 }
 
 .title {
-  font-size: 4rem;
-  line-height: 1.1;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: 4.5rem;
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: -0.04em;
 }
 
 .subtitle {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   color: var(--text-muted);
-  max-width: 500px;
+  max-width: 550px;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
 }
 
 .cta {
   background: var(--primary);
   color: white;
-  padding: 1rem 2rem;
-  border-radius: 9999px;
-  font-weight: 600;
+  padding: 1.25rem 2.5rem;
+  border-radius: 1.25rem;
+  font-weight: 800;
   font-size: 1.1rem;
-  width: fit-content;
-  box-shadow: 0 10px 15px -3px rgba(231, 76, 60, 0.3);
+  box-shadow: 0 10px 30px -5px rgba(255, 71, 87, 0.4);
+}
+
+.secondaryBtn {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 1.25rem;
+  border: 2px solid rgba(0,0,0,0.05);
+}
+
+.stats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.stats div {
+  display: flex;
+  flex-direction: column;
+}
+
+.stats strong {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--secondary);
+}
+
+.stats span {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
 }
 
 .mascotContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .hero {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 2rem;
+    padding: 4rem 0;
   }
   
   .content {
     align-items: center;
   }
-  
+
   .title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+  }
+  
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta, .secondaryBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .stats {
+    justify-content: center;
+    gap: 2rem;
   }
 }

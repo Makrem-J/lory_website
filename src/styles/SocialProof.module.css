@@ -1,0 +1,36 @@
+.container {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  margin-bottom: 2rem;
+}
+
+.track {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--secondary);
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+@media (max-width: 768px) {
+  .track {
+    gap: 2rem;
+  }
+  .logo {
+    font-size: 1rem;
+  }
+}
