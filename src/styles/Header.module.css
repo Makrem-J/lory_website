@@ -9,13 +9,37 @@
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 800;
   color: var(--primary);
   letter-spacing: -0.05em;
+  cursor: pointer;
 }
 
 .nav {
   display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.menu {
+  display: flex;
   gap: 1.5rem;
+}
+
+.navLink {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+
+.navLink:hover {
+  color: var(--primary);
+}
+
+@media (max-width: 1024px) {
+  .menu {
+    display: none;
+  }
 }

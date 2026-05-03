@@ -1,0 +1,46 @@
+.section {
+  padding: 8rem 0;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 4rem;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--success));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.card {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 2rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.icon {
+  margin-bottom: 1.5rem;
+}
+
+.featureTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.desc {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
