@@ -9,13 +9,13 @@ export const Header = () => {
   const { t } = useTranslation();
 
   const menuItems = [
-    { key: 'howItWorks', id: 'how-it-works' },
-    { key: 'features', id: 'features' },
-    { key: 'roadmap', id: 'roadmap' },
-    { key: 'faq', id: 'faq' },
-    { key: 'blog', id: 'blog' },
-    { key: 'news', id: 'news' },
-    { key: 'contact', id: 'contact' },
+    { key: 'howItWorks', id: 'how-it-works', color: '#FF4757' },
+    { key: 'features', id: 'features', color: '#FFA502' },
+    { key: 'roadmap', id: 'roadmap', color: '#2ED573' },
+    { key: 'faq', id: 'faq', color: '#1E90FF' },
+    { key: 'blog', id: 'blog', color: '#a55eea' },
+    { key: 'news', id: 'news', color: '#FF4757' },
+    { key: 'contact', id: 'contact', color: '#1E90FF' },
   ];
 
   const scrollTo = (id: string) => {
@@ -35,9 +35,14 @@ export const Header = () => {
       <nav className={styles.nav}>
         <div className={styles.menu}>
           {menuItems.map((item) => (
-            <button key={item.key} onClick={() => scrollTo(item.id)} className={styles.navLink}>
+            <motion.button 
+              key={item.key} 
+              onClick={() => scrollTo(item.id)} 
+              className={styles.navLink}
+              whileHover={{ scale: 1.1, color: item.color }}
+            >
               {t(`nav.${item.key}`)}
-            </button>
+            </motion.button>
           ))}
         </div>
         <LanguageToggle />

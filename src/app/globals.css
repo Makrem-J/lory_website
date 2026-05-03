@@ -1,22 +1,36 @@
 :root {
   --background: #ffffff;
   --foreground: #1a1a1a;
-  --primary: #FF4757; /* Vibrant Red-ish */
-  --secondary: #2F3542; /* Professional Navy */
-  --accent: #FFA502; /* Warm Yellow */
-  --success: #2ED573; /* Fresh Green */
+  --primary: #FF4757; 
+  --secondary: #2F3542; 
+  --accent: #FFA502; 
+  --success: #2ED573; 
   --blue: #1E90FF;
+  --purple: #a55eea;
   --text-muted: #747D8C;
-  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-bg: rgba(255, 255, 255, 0.9);
   --glass-border: rgba(0, 0, 0, 0.05);
+  
+  /* Rainbow Gradient Palette */
+  --rainbow-1: rgba(255, 71, 87, 0.05);
+  --rainbow-2: rgba(255, 165, 2, 0.05);
+  --rainbow-3: rgba(46, 213, 115, 0.05);
+  --rainbow-4: rgba(30, 144, 255, 0.05);
+  --rainbow-5: rgba(165, 94, 234, 0.05);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0F172A;
     --foreground: #F8FAFC;
-    --card-bg: rgba(30, 41, 59, 0.7);
+    --card-bg: rgba(30, 41, 59, 0.8);
     --glass-border: rgba(255, 255, 255, 0.1);
+    
+    --rainbow-1: rgba(255, 71, 87, 0.08);
+    --rainbow-2: rgba(255, 165, 2, 0.08);
+    --rainbow-3: rgba(46, 213, 115, 0.08);
+    --rainbow-4: rgba(30, 144, 255, 0.08);
+    --rainbow-5: rgba(165, 94, 234, 0.08);
   }
 }
 
@@ -31,9 +45,28 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: var(--background);
   color: var(--foreground);
   scroll-behavior: smooth;
+  
+  /* Light Rainbow Gradient Background */
+  background: linear-gradient(
+    120deg,
+    var(--background) 0%,
+    var(--rainbow-1) 20%,
+    var(--rainbow-2) 40%,
+    var(--rainbow-3) 60%,
+    var(--rainbow-4) 80%,
+    var(--rainbow-5) 100%
+  );
+  background-attachment: fixed;
+  background-size: 400% 400%;
+  animation: rainbowBg 20s ease infinite;
+}
+
+@keyframes rainbowBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 h1, h2, h3 {
