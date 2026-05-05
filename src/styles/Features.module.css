@@ -1,65 +1,89 @@
 .section {
-  padding: 8rem 0;
+  padding: 10rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.badge {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--brand-primary);
+  margin-bottom: 1rem;
+  display: block;
 }
 
 .title {
-  font-size: 3.5rem;
-  font-weight: 900;
-  text-align: center;
-  margin-bottom: 5rem;
-  letter-spacing: -0.04em;
+  color: var(--foreground);
 }
 
-.grid {
+.bentoGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 2rem;
 }
 
 .card {
-  background: #ffffff;
-  padding: 3.5rem 2.5rem;
-  border-radius: 2rem;
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+  background: white;
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-200);
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.08);
-  border-color: var(--primary);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--brand-primary);
 }
 
-.icon {
+.large {
+  grid-column: span 2;
+}
+
+.small {
+  grid-column: span 1;
+}
+
+.iconContainer {
   width: 64px;
   height: 64px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 1.25rem;
-  background: #f8f9fa;
-  margin-bottom: 0.5rem;
+  color: white;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.05);
 }
 
-.featureTitle {
+.cardTitle {
   font-size: 1.5rem;
-  font-weight: 900;
-  color: #1a1a1a;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: var(--neutral-900);
 }
 
-.desc {
-  color: #666;
-  line-height: 1.7;
-  font-size: 1rem;
+.cardDesc {
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
-@media (max-width: 768px) {
-  .title {
-    font-size: 2.5rem;
+@media (max-width: 1024px) {
+  .bentoGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .large, .small {
+    grid-column: span 1;
   }
 }

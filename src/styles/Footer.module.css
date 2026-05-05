@@ -1,7 +1,39 @@
 .footer {
-  padding: 3rem 2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  text-align: center;
-  color: var(--text-muted);
+  padding: 8rem 2rem 4rem;
+  background: white;
+  border-top: 1px solid var(--neutral-200);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.brand {
+  margin-bottom: 4rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-size: 1rem;
+  color: var(--neutral-700);
+}
+
+.bottom {
+  padding-top: 2rem;
+  border-top: 1px solid var(--neutral-100);
+  display: flex;
+  justify-content: center;
+}
+
+.rights {
   font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--neutral-400);
 }

@@ -1,137 +1,132 @@
 'use client';
 
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
 
 export const MasterMascot = () => {
   const { scrollYProgress } = useScroll();
+  const shouldReduceMotion = useReducedMotion();
   
   // Spring physics for smooth movement
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 70,
+    damping: 25,
     restDelta: 0.001
   });
 
-  // Scroll transformations
-  const scale = useTransform(smoothProgress, [0, 1], [1.3, 0.35]); // Decrease size significantly (approx 10% of start)
-  const rotate = useTransform(smoothProgress, [0, 1], [0, 60]); // Rotate between 0 and 60 (gentle tilt)
+  // 1. Scale: Begins at 60% of viewport height (approx 1.5 in relative terms) -> shrinks to 10% (approx 0.3)
+  const scale = useTransform(smoothProgress, [0, 0.3], [1.5, 0.3]);
   
-  // Positioning: Move all the way to the right edge [15% -> 2%]
-  const rightPos = useTransform(smoothProgress, [0, 1], ["15%", "2%"]);
-  const y = useTransform(smoothProgress, [0, 1], ["0vh", "75vh"]);
+  // 2. Position: Anchors to bottom-right
+  const x = useTransform(smoothProgress, [0, 0.3], ["0%", "42%"]);
+  const y = useTransform(smoothProgress, [0, 0.3], ["10vh", "82vh"]);
+  
+  // 3. Sway: Rotate between -60 and 60
+  // Combine scroll rotation with an ambient sway
+  const scrollRotate = useTransform(smoothProgress, [0, 1], [0, 60]);
+  
+  // Ambient sway animation
+  const sway = {
+    animate: {
+      rotate: shouldReduceMotion ? 0 : [-20, 20, -20],
+      transition: {
+        duration: 4,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  if (shouldReduceMotion) {
+    return (
+      <div 
+        style={{ position: 'fixed', bottom: '20px', right: '20px', width: '80px', height: '80px', zIndex: 1000 }}
+        aria-label="Lory mascot"
+      >
+        <MascotSVG />
+      </div>
+    );
+  }
 
   return (
     <motion.div
       style={{
         position: 'fixed',
-        top: '15vh',
-        right: rightPos,
-        zIndex: 1000,
-        scale,
-        rotate,
+        top: 0,
+        right: '50%',
+        translateX: x,
         translateY: y,
-        pointerEvents: 'none',
+        zIndex: 3000,
+        scale,
         width: '400px',
         height: '400px',
+        pointerEvents: 'none',
+        willChange: 'transform',
         transformOrigin: 'center center'
       }}
-      animate={{
-        y: [0, -15, 0],
-      }}
-      transition={{
-        y: {
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }
-      }}
+      aria-label="Lory mascot"
+      role="img"
     >
-      <svg
-        viewBox="0 0 200 200"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ width: '100%', height: '100%', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.15))' }}
+      <motion.div 
+        style={{ width: '100%', height: '100%' }}
+        variants={sway}
+        animate="animate"
       >
-        <defs>
-          <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FF4757" />
-            <stop offset="100%" stopColor="#E63946" />
-          </linearGradient>
-          <linearGradient id="wingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#1E90FF" />
-            <stop offset="100%" stopColor="#3742FA" />
-          </linearGradient>
-          <linearGradient id="bellyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFA502" />
-            <stop offset="100%" stopColor="#FF7F50" />
-          </linearGradient>
-        </defs>
-
-        {/* Tail Feathers */}
-        <motion.g
-          animate={{ rotate: [-3, 3, -3] }}
-          transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-        >
-          <path d="M80 150 L100 190 L120 150" fill="#2ED573" opacity="0.8" />
-          <path d="M70 145 L100 185 L130 145" fill="#26DE81" opacity="0.6" />
-        </motion.g>
-
-        {/* Body */}
-        <circle cx="100" cy="115" r="55" fill="url(#bodyGrad)" />
-        <circle cx="100" cy="125" r="40" fill="url(#bellyGrad)" />
-        
-        {/* Softer Wing Animations - More contained */}
-        <motion.g
-          animate={{ rotate: [-8, 8, -8] }} // Reduced rotation range for "soft" feel
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          style={{ originX: "45px", originY: "115px" }}
-        >
-          <path d="M45 110 C 25 100, 25 130, 45 140" fill="url(#wingGrad)" />
-          <path d="M40 115 C 20 110, 20 130, 40 135" fill="#5352ED" opacity="0.5" />
-        </motion.g>
-
-        <motion.g
-          animate={{ rotate: [8, -8, 8] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          style={{ originX: "155px", originY: "115px" }}
-        >
-          <path d="M155 110 C 175 100, 175 130, 155 140" fill="url(#wingGrad)" />
-          <path d="M160 115 C 180 110, 180 130, 160 135" fill="#5352ED" opacity="0.5" />
-        </motion.g>
-
-        {/* Head */}
-        <motion.g
-          animate={{ rotate: [-2, 2, -2] }}
-          transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
-          style={{ originX: "100px", originY: "70px" }}
-        >
-          <circle cx="100" cy="70" r="42" fill="url(#bodyGrad)" />
-          
-          {/* Eyes */}
-          <circle cx="82" cy="65" r="10" fill="white" />
-          <motion.circle 
-            cx="84" cy="65" r="5" fill="black" 
-            animate={{ scale: [1, 1.1, 1] }} 
-            transition={{ repeat: Infinity, duration: 5 }}
-          />
-          <circle cx="80" cy="62" r="3" fill="white" opacity="0.8" />
-
-          <circle cx="118" cy="65" r="10" fill="white" />
-          <motion.circle 
-            cx="116" cy="65" r="5" fill="black"
-            animate={{ scale: [1, 1.1, 1] }} 
-            transition={{ repeat: Infinity, duration: 5 }}
-          />
-          <circle cx="116" cy="62" r="3" fill="white" opacity="0.8" />
-          
-          {/* Beak */}
-          <path d="M92 82 L100 108 L108 82 H92" fill="#FF7F50" />
-          <path d="M100 82 L100 108 L108 82 H100" fill="#E67E22" />
-          
-          {/* Crest */}
-          <path d="M95 30 Q 100 10 105 30" stroke="#FF4757" strokeWidth="4" fill="none" />
-        </motion.g>
-      </svg>
+        <MascotSVG />
+      </motion.div>
     </motion.div>
   );
 };
+
+const MascotSVG = () => (
+  <svg
+    viewBox="0 0 200 200"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ width: '100%', height: '100%', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.1))' }}
+  >
+    <defs>
+      <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#6366F1" />
+        <stop offset="100%" stopColor="#4F46E5" />
+      </linearGradient>
+      <linearGradient id="wingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#F43F5E" />
+        <stop offset="100%" stopColor="#E11D48" />
+      </linearGradient>
+    </defs>
+
+    {/* Tail */}
+    <path d="M80 150 L100 190 L120 150" fill="#10B981" />
+
+    {/* Body */}
+    <circle cx="100" cy="110" r="55" fill="url(#bodyGrad)" />
+    <circle cx="100" cy="120" r="40" fill="#F59E0B" opacity="0.9" />
+    
+    {/* Wings */}
+    <motion.path 
+      d="M45 100 C 15 80, 15 130, 45 140" fill="url(#wingGrad)"
+      animate={{ rotate: [-5, 10, -5] }}
+      transition={{ duration: 2, repeat: Infinity }}
+    />
+    <motion.path 
+      d="M155 100 C 185 80, 185 130, 155 140" fill="url(#wingGrad)"
+      animate={{ rotate: [5, -10, 5] }}
+      transition={{ duration: 2, repeat: Infinity }}
+    />
+
+    {/* Head */}
+    <circle cx="100" cy="65" r="45" fill="url(#bodyGrad)" />
+    
+    {/* Eyes */}
+    <circle cx="82" cy="60" r="10" fill="white" />
+    <circle cx="83" cy="60" r="5" fill="#0F172A" />
+    <circle cx="118" cy="60" r="10" fill="white" />
+    <circle cx="117" cy="60" r="5" fill="#0F172A" />
+    
+    {/* Beak */}
+    <path d="M92 75 L100 105 L108 75 H92" fill="#F97316" />
+    
+    {/* Highlight */}
+    <path d="M85 35 Q 100 20 115 35" stroke="white" strokeWidth="2" opacity="0.3" fill="none" />
+  </svg>
+);
