@@ -1,9 +1,26 @@
 .section {
   padding: 10rem 0;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100vw;
+  margin: 0;
 }
 
+/* Feature Section: Indigo Tech */
+#features {
+  background: var(--neutral-50);
+  border-top: 1px solid var(--neutral-200);
+}
+
+.bentoGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+/* Internal overrides for Features.tsx */
 .header {
   text-align: center;
   margin-bottom: 5rem;
@@ -17,17 +34,6 @@
   color: var(--brand-primary);
   margin-bottom: 1rem;
   display: block;
-}
-
-.title {
-  color: var(--foreground);
-}
-
-.bentoGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto;
-  gap: 2rem;
 }
 
 .card {
@@ -47,13 +53,8 @@
   border-color: var(--brand-primary);
 }
 
-.large {
-  grid-column: span 2;
-}
-
-.small {
-  grid-column: span 1;
-}
+.large { grid-column: span 2; }
+.small { grid-column: span 1; }
 
 .iconContainer {
   width: 64px;
@@ -63,27 +64,12 @@
   align-items: center;
   justify-content: center;
   color: white;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.05);
 }
 
-.cardTitle {
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin-bottom: 0.75rem;
-  color: var(--neutral-900);
-}
-
-.cardDesc {
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
+.cardTitle { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--neutral-900); }
+.cardDesc { font-size: 1.1rem; line-height: 1.6; }
 
 @media (max-width: 1024px) {
-  .bentoGrid {
-    grid-template-columns: 1fr;
-  }
-  
-  .large, .small {
-    grid-column: span 1;
-  }
+  .bentoGrid { grid-template-columns: 1fr; }
+  .large, .small { grid-column: span 1; }
 }
