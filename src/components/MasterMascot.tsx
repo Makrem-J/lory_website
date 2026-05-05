@@ -12,14 +12,12 @@ export const MasterMascot = () => {
     restDelta: 0.001
   });
 
-  // Spread the transformation across the entire scroll [0, 1]
-  // This makes the mascot accompany the user all the way down.
-  const scale = useTransform(smoothProgress, [0, 1], [1.3, 0.4]);
-  const rotate = useTransform(smoothProgress, [0, 1], [0, 360]);
+  // Scroll transformations
+  const scale = useTransform(smoothProgress, [0, 1], [1.3, 0.35]); // Decrease size significantly (approx 10% of start)
+  const rotate = useTransform(smoothProgress, [0, 1], [0, 60]); // Rotate between 0 and 60 (gentle tilt)
   
-  // Positioning: Stay on the right. 
-  const rightPos = useTransform(smoothProgress, [0, 1], ["15%", "5%"]);
-  // y moves from its initial top position to a bottom-ish position across the WHOLE page
+  // Positioning: Move all the way to the right edge [15% -> 2%]
+  const rightPos = useTransform(smoothProgress, [0, 1], ["15%", "2%"]);
   const y = useTransform(smoothProgress, [0, 1], ["0vh", "75vh"]);
 
   return (
@@ -71,8 +69,8 @@ export const MasterMascot = () => {
 
         {/* Tail Feathers */}
         <motion.g
-          animate={{ rotate: [-5, 5, -5] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          animate={{ rotate: [-3, 3, -3] }}
+          transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
         >
           <path d="M80 150 L100 190 L120 150" fill="#2ED573" opacity="0.8" />
           <path d="M70 145 L100 185 L130 145" fill="#26DE81" opacity="0.6" />
@@ -82,29 +80,29 @@ export const MasterMascot = () => {
         <circle cx="100" cy="115" r="55" fill="url(#bodyGrad)" />
         <circle cx="100" cy="125" r="40" fill="url(#bellyGrad)" />
         
-        {/* Layered Wings */}
+        {/* Softer Wing Animations - More contained */}
         <motion.g
-          animate={{ rotate: [-15, 15, -15] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          style={{ originX: "40px", originY: "110px" }}
+          animate={{ rotate: [-8, 8, -8] }} // Reduced rotation range for "soft" feel
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          style={{ originX: "45px", originY: "115px" }}
         >
-          <path d="M45 110 C 10 90, 10 130, 45 140" fill="url(#wingGrad)" />
-          <path d="M35 115 C 5 100, 5 130, 35 135" fill="#5352ED" opacity="0.5" />
+          <path d="M45 110 C 25 100, 25 130, 45 140" fill="url(#wingGrad)" />
+          <path d="M40 115 C 20 110, 20 130, 40 135" fill="#5352ED" opacity="0.5" />
         </motion.g>
 
         <motion.g
-          animate={{ rotate: [15, -15, 15] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          style={{ originX: "160px", originY: "110px" }}
+          animate={{ rotate: [8, -8, 8] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          style={{ originX: "155px", originY: "115px" }}
         >
-          <path d="M155 110 C 190 90, 190 130, 155 140" fill="url(#wingGrad)" />
-          <path d="M165 115 C 195 100, 195 130, 165 135" fill="#5352ED" opacity="0.5" />
+          <path d="M155 110 C 175 100, 175 130, 155 140" fill="url(#wingGrad)" />
+          <path d="M160 115 C 180 110, 180 130, 160 135" fill="#5352ED" opacity="0.5" />
         </motion.g>
 
         {/* Head */}
         <motion.g
-          animate={{ rotate: [-3, 3, -3] }}
-          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+          animate={{ rotate: [-2, 2, -2] }}
+          transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
           style={{ originX: "100px", originY: "70px" }}
         >
           <circle cx="100" cy="70" r="42" fill="url(#bodyGrad)" />
@@ -114,7 +112,7 @@ export const MasterMascot = () => {
           <motion.circle 
             cx="84" cy="65" r="5" fill="black" 
             animate={{ scale: [1, 1.1, 1] }} 
-            transition={{ repeat: Infinity, duration: 4 }}
+            transition={{ repeat: Infinity, duration: 5 }}
           />
           <circle cx="80" cy="62" r="3" fill="white" opacity="0.8" />
 
@@ -122,7 +120,7 @@ export const MasterMascot = () => {
           <motion.circle 
             cx="116" cy="65" r="5" fill="black"
             animate={{ scale: [1, 1.1, 1] }} 
-            transition={{ repeat: Infinity, duration: 4 }}
+            transition={{ repeat: Infinity, duration: 5 }}
           />
           <circle cx="116" cy="62" r="3" fill="white" opacity="0.8" />
           
