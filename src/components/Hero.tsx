@@ -26,8 +26,8 @@ export const Hero = () => {
           transition={{ delay: 0.1 }}
           className={styles.title}
         >
-          Your World, <br />
-          <span style={{ color: 'var(--brand-primary)' }}>AI-Captured.</span>
+          {t('hero.title1')} <br />
+          <span style={{ color: 'var(--brand-primary)' }}>{t('hero.title2')}</span>
         </motion.h1>
         
         <motion.p

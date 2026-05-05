@@ -11,7 +11,8 @@ export const translations = {
     },
     hero: {
       badge: "The future of travel is here",
-      title: "Your Colorful AI Travel Companion",
+      title1: "Your World,",
+      title2: "AI-Captured.",
       subtitle: "The all-in-one AI app for smart itineraries, immersive audio guides, and AI-generated digital memories. Designed for the offline world.",
       cta: "Join the Waitlist",
       watchDemo: "Watch Demo",
@@ -19,7 +20,16 @@ export const translations = {
       offline: "Offline",
       rating: "Rating",
     },
+    preview: {
+      title: "All your travel needs in one pocket",
+      desc: "From smart itineraries that adapt to your pace, to immersive audio guides that tell the stories of the world—offline and on-demand.",
+      item1: "Auto-optimized routes",
+      item2: "Collaborative planning",
+      item3: "Real-time weather alerts",
+      location: "Nice, France",
+    },
     features: {
+      badge: "Powered by Lory AI",
       title: "Smart Features for Modern Travelers",
       aiItineraries: {
         title: "AI Itineraries",
@@ -33,6 +43,10 @@ export const translations = {
         title: "AI Vlogues",
         desc: "Transform your photos and clips into professional travel videos automatically.",
       },
+      aiPhotos: {
+        title: "AI Memories",
+        desc: "Enhance your travel photos and create cinematic digital souvenirs instantly.",
+      }
     },
     howItWorks: {
       title: "How it Works",
@@ -70,7 +84,7 @@ export const translations = {
     },
     news: {
       title: "Latest Updates",
-      item1: "lory.ai alpha testing begins in Nice!",
+      item1: "loryapp.ai alpha testing begins in Nice!",
       item2: "New AI video engine integrated for Vlogues.",
     },
     contact: {
@@ -108,7 +122,8 @@ export const translations = {
     },
     hero: {
       badge: "Le futur du voyage est arrivé",
-      title: "Votre Compagnon de Voyage IA Coloré",
+      title1: "Votre Monde,",
+      title2: "Capturé par l'IA.",
       subtitle: "L'application IA tout-en-un pour des itinéraires intelligents, des guides audio immersifs et des souvenirs numériques. Conçue pour le monde hors ligne.",
       cta: "Rejoindre la liste d'attente",
       watchDemo: "Voir la démo",
@@ -116,7 +131,16 @@ export const translations = {
       offline: "Hors ligne",
       rating: "Note",
     },
+    preview: {
+      title: "Tout pour vos voyages dans votre poche",
+      desc: "Des itinéraires intelligents qui s'adaptent à votre rythme aux guides audio immersifs qui racontent l'histoire du monde—hors ligne et à la demande.",
+      item1: "Itinéraires auto-optimisés",
+      item2: "Planification collaborative",
+      item3: "Alertes météo en temps réel",
+      location: "Nice, France",
+    },
     features: {
+      badge: "Propulsé par Lory AI",
       title: "Fonctionnalités intelligentes",
       aiItineraries: {
         title: "Itinéraires par IA",
@@ -130,6 +154,10 @@ export const translations = {
         title: "Vlogues IA",
         desc: "Transformez automatiquement vos photos et clips en vidéos de voyage professionnelles.",
       },
+      aiPhotos: {
+        title: "Souvenirs IA",
+        desc: "Améliorez vos photos de voyage et créez instantanément des souvenirs numériques cinématographiques.",
+      }
     },
     howItWorks: {
       title: "Comment ça marche",
@@ -167,7 +195,7 @@ export const translations = {
     },
     news: {
       title: "Dernières actualités",
-      item1: "Le test alpha de lory.ai commence à Nice !",
+      item1: "Le test alpha de loryapp.ai commence à Nice !",
       item2: "Nouveau moteur vidéo IA intégré pour les Vlogues.",
     },
     contact: {

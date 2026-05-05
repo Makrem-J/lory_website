@@ -1,21 +1,22 @@
 'use client';
 
+import { useTranslation } from '@/translations/TranslationContext';
 import { motion } from 'framer-motion';
 import styles from '@/styles/AppPreview.module.css';
 
 export const AppPreview = () => {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         <div className={styles.textSide}>
-          <h2 className={styles.title}>All your travel needs in one pocket</h2>
-          <p className={styles.desc}>
-            From smart itineraries that adapt to your pace, to immersive audio guides that tell the stories of the world—offline and on-demand.
-          </p>
+          <h2 className={styles.title}>{t('preview.title')}</h2>
+          <p className={styles.desc}>{t('preview.desc')}</p>
           <ul className={styles.list}>
-            <li>✓ Auto-optimized routes</li>
-            <li>✓ Collaborative planning</li>
-            <li>✓ Real-time weather alerts</li>
+            <li>✓ {t('preview.item1')}</li>
+            <li>✓ {t('preview.item2')}</li>
+            <li>✓ {t('preview.item3')}</li>
           </ul>
         </div>
         
@@ -27,7 +28,7 @@ export const AppPreview = () => {
           >
             {/* Screen Content */}
             <div className={styles.screen}>
-              <div className={styles.screenHeader}>Nice, France</div>
+              <div className={styles.screenHeader}>{t('preview.location')}</div>
               <div className={styles.mapArea}>
                 <div className={styles.mapPoint} style={{ top: '30%', left: '40%' }}></div>
                 <div className={styles.mapPoint} style={{ top: '60%', left: '70%' }}></div>
@@ -38,7 +39,7 @@ export const AppPreview = () => {
                   <span>09:00</span>
                   <strong>Promenade des Anglais</strong>
                 </div>
-                <div className={styles.listItem} style={{ background: 'var(--primary)', color: 'white' }}>
+                <div className={styles.listItem} style={{ background: 'var(--brand-primary)', color: 'white' }}>
                   <span>11:30</span>
                   <strong>Old Town (Vieux Nice)</strong>
                 </div>
