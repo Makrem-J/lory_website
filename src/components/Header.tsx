@@ -30,7 +30,7 @@ export const Header = () => {
         className={styles.logo}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
-        lory.ai
+        loryapp.ai
       </motion.div>
       <nav className={styles.nav}>
         <div className={styles.menu}>
