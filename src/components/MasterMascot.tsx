@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, useReducedMotion, Variants } from 'framer-motion';
 
 export const MasterMascot = () => {
   const { scrollYProgress } = useScroll();
@@ -20,12 +20,8 @@ export const MasterMascot = () => {
   const x = useTransform(smoothProgress, [0, 0.3], ["0%", "42%"]);
   const y = useTransform(smoothProgress, [0, 0.3], ["10vh", "82vh"]);
   
-  // 3. Sway: Rotate between -60 and 60
-  // Combine scroll rotation with an ambient sway
-  const scrollRotate = useTransform(smoothProgress, [0, 1], [0, 60]);
-  
-  // Ambient sway animation
-  const sway = {
+  // Ambient sway animation variants with explicit typing
+  const sway: Variants = {
     animate: {
       rotate: shouldReduceMotion ? 0 : [-20, 20, -20],
       transition: {
