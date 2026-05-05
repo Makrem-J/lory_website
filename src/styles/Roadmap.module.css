@@ -1,7 +1,6 @@
 .section {
   padding: 8rem 2rem;
-  background: #F0FDFA; /* Emerald Nature Theme */
-  border-top: 1px solid #CCFBF1;
+  background: #F0FDFA;
   margin: 4rem 0;
 }
 
@@ -22,11 +21,19 @@
 }
 
 .card {
+  /* Colorized Background for Roadmap */
+  background: #ECFDF5; /* Light Emerald */
   padding: 2.5rem;
   border-radius: var(--radius-md);
-  background: white;
+  border: 1px solid #D1FAE5;
   border-left: 6px solid var(--accent-nature);
   box-shadow: 0 4px 20px rgba(16, 185, 129, 0.05);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  background: white;
 }
 
 .date {

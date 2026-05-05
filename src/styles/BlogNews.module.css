@@ -1,7 +1,6 @@
 .container {
   padding: 8rem 2rem;
-  background: #FDF2F8; /* Pink Lory Theme */
-  border-top: 1px solid #FCE7F3;
+  background: #FDF2F8;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
@@ -28,10 +27,12 @@
 }
 
 .item {
+  /* Colorized Background for Blog/News Items */
+  background: #FCE7F3; /* Light Pink */
   padding: 2rem;
-  background: white;
   border-radius: 1.5rem;
   cursor: pointer;
+  border: 1px solid #FBCFE8;
   border-left: 6px solid var(--accent-lory);
   box-shadow: 0 4px 15px rgba(236, 72, 153, 0.05);
   transition: all 0.3s ease;
@@ -39,6 +40,7 @@
 
 .item:hover {
   transform: translateX(10px);
+  background: white;
   box-shadow: 0 10px 25px rgba(236, 72, 153, 0.1);
 }
 
