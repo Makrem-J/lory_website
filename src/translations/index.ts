@@ -132,7 +132,7 @@ export const translations = {
       rating: "Note",
     },
     preview: {
-      title: "Tout pour vos voyages dans votre poche",
+      title: "Tous vos besoins de voyage dans une seule poche",
       desc: "Des itinéraires intelligents qui s'adaptent à votre rythme aux guides audio immersifs qui racontent l'histoire du monde—hors ligne et à la demande.",
       item1: "Itinéraires auto-optimisés",
       item2: "Planification collaborative",
