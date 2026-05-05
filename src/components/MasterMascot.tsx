@@ -13,17 +13,18 @@ export const MasterMascot = () => {
     restDelta: 0.001
   });
 
-  // 1. Scale: Begins at 60% of viewport height (approx 1.5 in relative terms) -> shrinks to 10% (approx 0.3)
-  const scale = useTransform(smoothProgress, [0, 0.3], [1.5, 0.3]);
+  // 1. Scale: Begins at 60% of viewport height (approx 1.5) -> shrinks to 10% (approx 0.2)
+  const scale = useTransform(smoothProgress, [0, 1], [1.5, 0.2]);
   
-  // 2. Position: Anchors to bottom-right
-  const x = useTransform(smoothProgress, [0, 0.3], ["0%", "42%"]);
-  const y = useTransform(smoothProgress, [0, 0.3], ["10vh", "82vh"]);
+  // 2. Position: Always on the right, moves to bottom-right corner
+  // We keep it at a fixed 'right' distance and use translateY to descend
+  const y = useTransform(smoothProgress, [0, 1], ["10vh", "82vh"]);
+  const rotate = useTransform(smoothProgress, [0, 1], [0, 60]); // Gentle 60 degree tilt on scroll
   
-  // Ambient sway animation variants with explicit typing
+  // Ambient sway animation variants
   const sway: Variants = {
     animate: {
-      rotate: shouldReduceMotion ? 0 : [-20, 20, -20],
+      rotate: shouldReduceMotion ? 0 : [-10, 10, -10],
       transition: {
         duration: 4,
         repeat: Infinity,
@@ -35,7 +36,7 @@ export const MasterMascot = () => {
   if (shouldReduceMotion) {
     return (
       <div 
-        style={{ position: 'fixed', bottom: '20px', right: '20px', width: '80px', height: '80px', zIndex: 1000 }}
+        style={{ position: 'fixed', bottom: '20px', right: '20px', width: '80px', height: '80px', zIndex: 6000 }}
         aria-label="Lory mascot"
       >
         <MascotSVG />
@@ -48,11 +49,11 @@ export const MasterMascot = () => {
       style={{
         position: 'fixed',
         top: 0,
-        right: '50%',
-        translateX: x,
+        right: '2%', // Locked to the way right
         translateY: y,
-        zIndex: 3000,
+        zIndex: 6000, // Topmost layer
         scale,
+        rotate,
         width: '400px',
         height: '400px',
         pointerEvents: 'none',
