@@ -93,7 +93,7 @@ export const translations = {
       error: "Something went wrong. Please try again.",
     },
     footer: {
-      rights: "© 2026 lory.ai. All rights reserved.",
+      rights: "© lory.ai. All rights reserved. Made by Makrem on May 2026",
     },
   },
   fr: {
@@ -190,7 +190,7 @@ export const translations = {
       error: "Une erreur est survenue. Veuillez réessayer.",
     },
     footer: {
-      rights: "© 2026 lory.ai. Tous droits réservés.",
+      rights: "© lory.ai. Tous droits réservés. Réalisé par Makrem en mai 2026",
     },
   },
 };
